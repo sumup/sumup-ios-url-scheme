@@ -27,7 +27,7 @@ If you are planning to open the SumUp app using a URL, please find the parameter
 |`callbacksuccess`    | URL to be opened when the transaction succeeds. See [Callback query parameters](#Callback-query-parameters).|
 |`receipt-email`      | Prefills the email textfield when asking the customer whether he wants a receipts. |
 |`receipt-mobilephone`| Prefills the phone number textfield when asking the customer whether he wants a receipts. |
-|`foreign-tx-id`      | An optional ID to be associated with this transaction. Please see our [API documentation](https://sumup.com/integration#transactionReportingAPIs) on how to retrieve a transaction using this ID. This ID has to be unique in the scope of a SumUp merchant account and its sub-accounts. It must not be longer than 128 characters and can only contain printable ASCII characters. If provided it will be appended to the callback URLs as a [query parameter](#Callback-query-parameters).* Supported by SumUp app version 1.53 and later.* |
+|`foreign-tx-id`      | An optional ID to be associated with this transaction. Please see our [API documentation](https://sumup.com/integration#transactionReportingAPIs) on how to retrieve a transaction using this ID. This ID has to be unique in the scope of a SumUp merchant account and its sub-accounts. It must not be longer than 128 characters and can only contain printable ASCII characters. *Supported by SumUp app version 1.53 and later. Version 1.53.2 and later will append it to the callback URLs as a [query parameter](#Callback-query-parameters) if provided.* |
 
 
 ## Callback query parameters
@@ -40,7 +40,7 @@ After the payment has been executed the SumUp app will open the `callbacksuccess
 |                 | failed           | The transaction has failed.    |
 |                 | invalidstate     | The transaction can not be accepted as the SumUp app is in an invalid state. Please ask the user to open the SumUp app and make sure he's ready to accept payments. |
 | `smp-tx-code`   | TRANSACTION-CODE | The transaction code for this payment. Please see our [API documentation](https://sumup.com/integration#transactionReportingAPIs) to find out how to retreive details on this payment. *Supported by SumUp app version 1.53 and later.* |
-| `foreign-tx-id` | YOUR-TX-ID       | Only if provided, see [Optional query parameters](#optional-query-parameters). |
+| `foreign-tx-id` | YOUR-TX-ID       | Only if provided. See [Optional query parameters](#optional-query-parameters). *Supported by SumUp app version 1.53.2 and later.*|
 
 
 ## SMPPaymentRequest
