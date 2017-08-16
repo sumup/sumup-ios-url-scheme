@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SMPSkipScreenOptions.h"
 
 extern NSString const *SMPPaymentRequestStatusParameterKey __deprecated_msg("Please use SMPPaymentRequestKeyStatus.");
 
@@ -56,7 +57,11 @@ extern NSString const *SMPPaymentRequestKeyForeignTransactionID;
 
 /**
  *  Will check whether the SumUp app is installed by calling
- *  -[UIApplication canOpenURL:] and SumUp's URL scheme.
+ *  -[UIApplication canOpenURL:] using SumUp's URL scheme 'sumupmerchant://'.
+ *
+ *  Please make sure to add 'sumupmerchant' to your list of LSApplicationQueriesSchemes
+ *  See https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW14
+ *
  *
  *  @return A boolean indicating if the SumUp app is installed.
  */
@@ -82,6 +87,8 @@ extern NSString const *SMPPaymentRequestKeyForeignTransactionID;
  * These URLs are optional, however we would encourage you to set
  * them to bring the user back to your app or website once the
  * transaction has been finished.
+ *
+ * See https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102207
  */
 @property (strong) NSURL *callbackURLSuccess;
 @property (strong) NSURL *callbackURLFailure;
@@ -98,6 +105,14 @@ extern NSString const *SMPPaymentRequestKeyForeignTransactionID;
  *  If provided it will be appended to the callback URLs as a query parameter.
  */
 @property (strong) NSString *foreignTransactionID;
+
+/**
+ *  An optional flag to skip the confirmation screen in checkout.
+ *  If set, the checkout will be dismissed w/o user interaction.
+ *  Default is SMPSkipScreenOptionNone.
+ */
+@property (nonatomic) SMPSkipScreenOptions skipScreenOptions;
+
 
 - (void)addTag:(NSString *)aTag forKey:(NSString *)tagKey;
 

@@ -1,4 +1,4 @@
-#SumUp custom URL scheme
+# SumUp custom URL scheme
 
 Using the custom SumUp URL scheme you can accept card payments from your iOS app or website through the SumUp iOS app.
  To get started you will need to create a SumUp account and get an affiliate key in our [Developer section](https://me.sumup.com/developers).
@@ -17,8 +17,8 @@ If you are planning to open the SumUp app using a URL, please find the parameter
 |`currency`      | The ISO 4217 code of currency to be charged. The currency needs to match the currency of the user that is logged into the SumUp app. For example EUR, GBP, BRL, CHF, PLN. |
 |`affiliate-key` | Your affiliate key. It needs to be associated with the calling app's bundle identifier. |
 
-## Optional query parameters
 
+## Optional query parameters
 
 | Key                 | Comment |
 | --------------------|:------- |
@@ -28,6 +28,7 @@ If you are planning to open the SumUp app using a URL, please find the parameter
 |`receipt-email`      | Prefills the email textfield when asking the customer whether he wants a receipts. |
 |`receipt-mobilephone`| Prefills the phone number textfield when asking the customer whether he wants a receipts. |
 |`foreign-tx-id`      | An optional ID to be associated with this transaction. Please see our [API documentation](https://sumup.com/integration#transactionReportingAPIs) on how to retrieve a transaction using this ID. This ID has to be unique in the scope of a SumUp merchant account and its sub-accounts. It must not be longer than 128 characters and can only contain printable ASCII characters. *Supported by SumUp app version 1.53 and later. Version 1.53.2 and later will append it to the callback URLs as a [query parameter](#Callback-query-parameters) if provided.* |
+|`skip-screen-success`| To skip the screen shown at the end of a successful transaction, the `skip-screen-success=true` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please note success screens will still be shown when using the SumUp Air Lite readers. *Supported by SumUp app version 1.69 and later.*|
 
 
 ## Callback query parameters
@@ -64,5 +65,18 @@ request = [SMPPaymentRequest paymentRequestWithAmount:amount
  * &callbackfail=samplepaymentapp%3A%2F%2F
  * &callbacksuccess=samplepaymentapp%3A%2F%2F
  */
+
+/* Optionally: Setting the option to skip success screens
+ * to add skip-screen-success=true to the URL
+ * Supported by SumUp app version 1.69 and later.
+ * [request setSkipScreenOptions:SMPSkipScreenOptionSuccess];
+ */
+
 [request openSumUpMerchantApp];
 ```
+
+
+## Community
+
+- **Questions?** Get in contact with our integration team by sending an email to <a href="mailto:integration@sumup.com">integration@sumup.com</a>.  
+- **Found a bug?** [Open an issue](https://github.com/sumup/sumup-ios-url-scheme/issues/new). Please provide as much information as possible.
