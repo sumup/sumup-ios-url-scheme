@@ -24,6 +24,7 @@
 		E97A96F216413A4D00C9EC7C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97A96F116413A4D00C9EC7C /* Default-568h@2x.png */; };
 		E97A96F516413A4D00C9EC7C /* SMPPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E97A96F416413A4D00C9EC7C /* SMPPaymentViewController.m */; };
 		E97A96F816413A4D00C9EC7C /* SMPPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97A96F616413A4D00C9EC7C /* SMPPaymentViewController.xib */; };
+		F000000116413A4D00C9EC7C /* SMPPaymentSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F000000316413A4D00C9EC7C /* SMPPaymentSceneDelegate.m */; };
 		E9C5F0EC1B988E9900EE5AA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C5F0EB1B988E9900EE5AA2 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,8 @@
 		E97A96F316413A4D00C9EC7C /* SMPPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMPPaymentViewController.h; sourceTree = "<group>"; };
 		E97A96F416413A4D00C9EC7C /* SMPPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMPPaymentViewController.m; sourceTree = "<group>"; };
 		E97A96F716413A4D00C9EC7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SMPPaymentViewController.xib; sourceTree = "<group>"; };
+		F000000216413A4D00C9EC7C /* SMPPaymentSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMPPaymentSceneDelegate.h; sourceTree = "<group>"; };
+		F000000316413A4D00C9EC7C /* SMPPaymentSceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMPPaymentSceneDelegate.m; sourceTree = "<group>"; };
 		E9C5F0EB1B988E9900EE5AA2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -113,6 +116,8 @@
 			children = (
 				E97A96EA16413A4D00C9EC7C /* SMPPaymentAppDelegate.h */,
 				E97A96EB16413A4D00C9EC7C /* SMPPaymentAppDelegate.m */,
+				F000000216413A4D00C9EC7C /* SMPPaymentSceneDelegate.h */,
+				F000000316413A4D00C9EC7C /* SMPPaymentSceneDelegate.m */,
 				E97A96F316413A4D00C9EC7C /* SMPPaymentViewController.h */,
 				E97A96F416413A4D00C9EC7C /* SMPPaymentViewController.m */,
 				E97A96F616413A4D00C9EC7C /* SMPPaymentViewController.xib */,
@@ -213,6 +218,7 @@
 			files = (
 				E97A96E816413A4D00C9EC7C /* main.m in Sources */,
 				E97A96EC16413A4D00C9EC7C /* SMPPaymentAppDelegate.m in Sources */,
+				F000000116413A4D00C9EC7C /* SMPPaymentSceneDelegate.m in Sources */,
 				E97A96F516413A4D00C9EC7C /* SMPPaymentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,7 +263,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -276,7 +282,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -289,6 +295,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/\"",
@@ -296,7 +303,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SMPPaymentSampleApp/SMPPaymentSampleApp-Prefix.pch";
 				INFOPLIST_FILE = "SMPPaymentSampleApp/SMPPaymentSampleApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sumup.${PRODUCT_NAME:rfc1034identifier}";
@@ -311,6 +318,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/\"",
@@ -318,7 +326,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SMPPaymentSampleApp/SMPPaymentSampleApp-Prefix.pch";
 				INFOPLIST_FILE = "SMPPaymentSampleApp/SMPPaymentSampleApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sumup.${PRODUCT_NAME:rfc1034identifier}";

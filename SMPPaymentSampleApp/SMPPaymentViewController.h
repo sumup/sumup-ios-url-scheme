@@ -17,5 +17,6 @@
 @property(weak, nonatomic) IBOutlet UITextView* textView;
 
 - (IBAction)payFromSender:(id)sender;
+- (void)handleSumUpCallbackURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication;
 
 @end
