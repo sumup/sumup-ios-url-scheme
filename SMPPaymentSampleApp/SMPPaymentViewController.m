@@ -25,7 +25,8 @@
     NSString* txCode;
 
     for (NSURLQueryItem* queryItem in [[NSURLComponents alloc] initWithURL:url
-                                                 resolvingAgainstBaseURL:NO].queryItems)
+                                                   resolvingAgainstBaseURL:NO]
+             .queryItems)
     {
         if ([queryItem.name isEqualToString:(NSString*)SMPPaymentRequestKeyStatus])
         {
@@ -52,10 +53,10 @@
 
     NSLog(@"status - code: %@ - %@", status, txCode);
 
-    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:alertTitle
-                                                                             message:alertMessage
-                                                                      preferredStyle:
-                                                                          UIAlertControllerStyleAlert];
+    UIAlertController* alertController =
+        [UIAlertController alertControllerWithTitle:alertTitle
+                                            message:alertMessage
+                                     preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
                                                         style:UIAlertActionStyleDefault
                                                       handler:nil]];
