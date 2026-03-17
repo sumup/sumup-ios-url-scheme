@@ -24,47 +24,33 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication*)application
-              openURL:(NSURL*)url
-    sourceApplication:(NSString*)sourceApplication
-           annotation:(id)annotation
+- (BOOL)handleSumUpCallbackURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication
 {
-    if (![sourceApplication hasPrefix:@"com.sumup.merchant"])
+    if (sourceApplication.length && ![sourceApplication hasPrefix:@"com.sumup.merchant"])
     {
         NSLog(@"Not SumUp merchant app.");
         return YES;
     }
 
-    // Get status and transaction code from URL query when being opened from SumUp app.
-    NSArray* pairs = [[url query] componentsSeparatedByString:@"&"];
     NSString* status;
     NSString* txCode;
 
-    for (NSString* kvp in pairs)
+    for (NSURLQueryItem* queryItem in [[NSURLComponents alloc] initWithURL:url
+                                                   resolvingAgainstBaseURL:NO]
+             .queryItems)
     {
-        NSArray* kv = [kvp componentsSeparatedByString:@"="];
-
-        if ([kv count] != 2)
+        if ([queryItem.name isEqualToString:(NSString*)SMPPaymentRequestKeyStatus])
         {
-            continue;
+            status = queryItem.value;
         }
-
-        NSString* key = [kv[0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString* val = [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-        if ([key isEqualToString:(NSString*)SMPPaymentRequestKeyStatus])
+        else if ([queryItem.name isEqualToString:(NSString*)SMPPaymentRequestKeyTransactionCode])
         {
-            status = val;
-        }
-        else if ([key isEqualToString:(NSString*)SMPPaymentRequestKeyTransactionCode])
-        {
-            txCode = key;
+            txCode = queryItem.value;
         }
     }
 
     NSString* alertMessage;
 
-    // check if payment did succeed
     if ([status isEqualToString:(NSString*)SMPPaymentRequestStatusSuccess])
     {
         alertMessage = [NSString stringWithFormat:@"Thanks. Payment successful. Code: %@.", txCode];
@@ -84,6 +70,14 @@
                       otherButtonTitles:nil] show];
 
     return YES;
+}
+
+- (BOOL)application:(UIApplication*)application
+            openURL:(NSURL*)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey, id>*)options
+{
+    return [self handleSumUpCallbackURL:url
+                      sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
 }
 
 @end
