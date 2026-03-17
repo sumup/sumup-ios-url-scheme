@@ -9,9 +9,7 @@
 
 </div>
 
-This repository documents the lightweight SumUp app-switch integration for iOS.
-It lets your app hand off a payment request to the SumUp merchant app through a
-custom URL scheme and receive the result through your own callback URL.
+This repository documents the lightweight SumUp app-switch integration for iOS. It lets your app hand off a payment request to the SumUp merchant app through a custom URL scheme and receive the result through your own callback URL.
 
 Use it when you want to:
 
@@ -19,28 +17,19 @@ Use it when you want to:
 - keep the integration surface very small
 - receive the payment result back through your own URL scheme
 
-The sample app in this repository can be used as a reference implementation for
-the integration contract. If you want to accept payments fully inside your app,
-use the [SumUp iOS SDK](https://github.com/sumup/sumup-ios-sdk) instead.
+The sample app in this repository can be used as a reference implementation for the integration contract. If you want to accept payments fully inside your app, use the [SumUp iOS SDK](https://github.com/sumup/sumup-ios-sdk) instead.
 
 ## Getting Started
 
 1. Create a SumUp account.
-2. Generate an affiliate key in
-   [me.sumup.com/developers](https://me.sumup.com/developers).
+2. Generate an affiliate key in [me.sumup.com/developers](https://me.sumup.com/developers).
 3. Register a callback URL scheme for your app in `CFBundleURLTypes`.
-4. Add `sumupmerchant` to `LSApplicationQueriesSchemes` so
-   `canOpenURL("sumupmerchant://")` works.
-5. Use a unique `foreign-tx-id` whenever possible for reconciliation and
-   idempotency.
+4. Add `sumupmerchant` to `LSApplicationQueriesSchemes` so `canOpenURL("sumupmerchant://")` works.
+5. Use a unique `foreign-tx-id` whenever possible for reconciliation and idempotency.
 
 ## URL Contract
 
-The compatibility contract for existing integrators is the launch URL:
-
-`sumupmerchant://pay/1.0`
-
-and the query parameter and callback parameter names documented below.
+The compatibility contract for existing integrators is the launch URL `sumupmerchant://pay/1.0` and the query parameter and callback parameter names documented below.
 
 ### Mandatory Query Parameters
 
@@ -64,9 +53,7 @@ and the query parameter and callback parameter names documented below.
 
 ### Callback Query Parameters
 
-After the payment completes, the SumUp app opens `callbacksuccess` for a
-successful payment or `callbackfail` otherwise. The following query parameters
-may be appended:
+After the payment completes, the SumUp app opens `callbacksuccess` for a successful payment or `callbackfail` otherwise. The following query parameters may be appended:
 
 | Key | Possible values | Comment |
 | --- | :---: | :--- |
@@ -89,8 +76,7 @@ sumupmerchant://pay/1.0?amount=10.00&currency=EUR&affiliate-key=YOUR-AFFILIATE-K
 
 ### Use `SMPPaymentRequest`
 
-If you are integrating from Objective-C, `SMPPaymentRequest` provides a
-convenient wrapper around the same URL contract.
+If you are integrating from Objective-C, `SMPPaymentRequest` provides a convenient wrapper around the same URL contract.
 
 ```objc
 SMPPaymentRequest *request;
@@ -113,9 +99,7 @@ request.skipScreenOptions = SMPSkipScreenOptionSuccess;
 
 ## Handle The Callback
 
-On current iOS versions, handle the callback in your scene delegate or
-`application:openURL:options:` implementation. Parse query items with
-`NSURLComponents` instead of manually splitting strings.
+On current iOS versions, handle the callback in your scene delegate or `application:openURL:options:` implementation. Parse query items with `NSURLComponents` instead of manually splitting strings.
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts urlContexts: Set<UIOpenURLContext>) {
@@ -136,9 +120,7 @@ func scene(_ scene: UIScene, openURLContexts urlContexts: Set<UIOpenURLContext>)
 - Keep using `sumupmerchant://pay/1.0`. Existing integrators rely on that path.
 - Preserve the current query parameter and callback parameter names.
 - Do not assume all callback parameters are present on older SumUp app versions.
-- If you need richer in-app payment flows, migrate to the
-  [SumUp iOS SDK](https://github.com/sumup/sumup-ios-sdk) rather than extending
-  the URL contract.
+- If you need richer in-app payment flows, migrate to the [SumUp iOS SDK](https://github.com/sumup/sumup-ios-sdk) rather than extending the URL contract.
 
 ## Community
 
