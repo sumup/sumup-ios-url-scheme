@@ -12,8 +12,8 @@
 
 @interface SMPPaymentAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property(strong, nonatomic) UIWindow* window;
 
-@property (strong, nonatomic) SMPPaymentViewController *viewController;
+@property(strong, nonatomic) SMPPaymentViewController* viewController;
 
 @end

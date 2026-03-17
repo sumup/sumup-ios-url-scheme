@@ -17,7 +17,6 @@ If you are planning to open the SumUp app using a URL, please find the parameter
 |`currency`      | The ISO 4217 code of currency to be charged. The currency needs to match the currency of the user that is logged into the SumUp app. For example EUR, GBP, BRL, CHF, PLN. |
 |`affiliate-key` | Your affiliate key. It needs to be associated with the calling app's bundle identifier. |
 
-
 ## Optional query parameters
 
 | Key                 | Comment |
@@ -30,7 +29,6 @@ If you are planning to open the SumUp app using a URL, please find the parameter
 |`foreign-tx-id`      | An optional ID to be associated with this transaction. Please see our [API documentation](https://sumup.com/integration#transactionReportingAPIs) on how to retrieve a transaction using this ID. This ID has to be unique in the scope of a SumUp merchant account and its sub-accounts. It must not be longer than 128 characters and can only contain printable ASCII characters. *Supported by SumUp app version 1.53 and later. Version 1.53.2 and later will append it to the callback URLs as a [query parameter](#Callback-query-parameters) if provided.* |
 |`skip-screen-success`| To skip the screen shown at the end of a successful transaction, the `skip-screen-success=true` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please note success screens will still be shown when using the SumUp Air Lite readers. *Supported by SumUp app version 1.69 and later.*|
 
-
 ## Callback query parameters
 
 After the payment has been executed the SumUp app will open the `callbacksuccess` URL if the payment succeeded and the `callbackfail` URL if it did not. We will append the following query parameters if applicable:
@@ -42,7 +40,6 @@ After the payment has been executed the SumUp app will open the `callbacksuccess
 |                 | invalidstate     | The transaction can not be accepted as the SumUp app is in an invalid state. Please ask the user to open the SumUp app and make sure he's ready to accept payments. |
 | `smp-tx-code`   | TRANSACTION-CODE | The transaction code for this payment. Please see our [API documentation](https://sumup.com/integration#transactionReportingAPIs) to find out how to retreive details on this payment. *Supported by SumUp app version 1.53 and later.* |
 | `foreign-tx-id` | YOUR-TX-ID       | Only if provided. See [Optional query parameters](#optional-query-parameters). *Supported by SumUp app version 1.53.2 and later.*|
-
 
 ## SMPPaymentRequest
 If you are building your own iOS app you can use this class to conveniently open the SumUp app to accept a payment. It knows about all the URL parameters and makes accepting a payment as easy as:
@@ -74,7 +71,6 @@ request = [SMPPaymentRequest paymentRequestWithAmount:amount
 
 [request openSumUpMerchantApp];
 ```
-
 
 ## Community
 

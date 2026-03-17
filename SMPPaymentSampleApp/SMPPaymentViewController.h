@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface SMPPaymentViewController : UIViewController <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *textFieldAmount;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldCurrency;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldTitle;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldEmail;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property(weak, nonatomic) IBOutlet UITextField* textFieldAmount;
+@property(weak, nonatomic) IBOutlet UITextField* textFieldCurrency;
+@property(weak, nonatomic) IBOutlet UITextField* textFieldTitle;
+@property(weak, nonatomic) IBOutlet UITextField* textFieldPhone;
+@property(weak, nonatomic) IBOutlet UITextField* textFieldEmail;
+@property(weak, nonatomic) IBOutlet UITextView* textView;
 
 - (IBAction)payFromSender:(id)sender;
 
