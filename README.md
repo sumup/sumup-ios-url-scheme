@@ -33,35 +33,35 @@ The compatibility contract for existing integrators is the launch URL `sumupmerc
 
 ### Mandatory Query Parameters
 
-| Key | Comment |
-| --- | :--- |
-| `amount` | The amount to charge. Use `.` as the decimal separator. |
-| `currency` | ISO 4217 currency code. It must match the currency of the merchant logged into the SumUp app, for example `EUR`, `GBP`, `BRL`, `CHF`, `PLN`. |
-| `affiliate-key` | Your affiliate key. It must be associated with the calling app's bundle identifier. |
+| Key             | Comment                                                                                                                                        |
+|-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `amount`        | The amount to charge. Use `.` as the decimal separator.                                                                                        |
+| `currency`      | ISO 4217 currency code. It must match the currency of the merchant logged into the SumUp app, for example `EUR`, `GBP`, `BRL`, `CHF`, `PLN`. |
+| `affiliate-key` | Your affiliate key. It must be associated with the calling app's bundle identifier.                                                        |
 
 ### Optional Query Parameters
 
-| Key | Comment |
-| --- | :--- |
-| `title` | Optional title for the transaction. |
-| `callbackfail` | URL to open when the transaction fails. See [Callback query parameters](#callback-query-parameters). |
-| `callbacksuccess` | URL to open when the transaction succeeds. See [Callback query parameters](#callback-query-parameters). |
-| `receipt-email` | Prefills the email field when the customer is asked about a receipt. |
-| `receipt-mobilephone` | Prefills the phone field when the customer is asked about a receipt. |
-| `foreign-tx-id` | Optional ID associated with the transaction. It must be unique within the merchant account scope, no longer than 128 characters, and use printable ASCII characters only. Supported by SumUp app version 1.53 and later. Version 1.53.2 and later appends it to callback URLs when provided. |
-| `skip-screen-success` | Set `skip-screen-success=true` to skip the success screen after a successful payment. Your application becomes responsible for displaying the result to the customer. Supported by SumUp app version 1.69 and later. |
+| Key                   | Comment                                                                                                                                                                                                                                                                       |
+|-----------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `title`               | Optional title for the transaction.                                                                                                                                                                                                                                            |
+| `callbackfail`        | URL to open when the transaction fails. See [Callback query parameters](#callback-query-parameters).                                                                                                                                                                          |
+| `callbacksuccess`     | URL to open when the transaction succeeds. See [Callback query parameters](#callback-query-parameters).                                                                                                                                                               |
+| `receipt-email`       | Prefills the email field when the customer is asked about a receipt.                                                                                                                                                                                                          |
+| `receipt-mobilephone` | Prefills the phone field when the customer is asked about a receipt.                                                                                                                                                                                                  |
+| `foreign-tx-id`       | Optional ID associated with the transaction. It must be unique within the merchant account scope, no longer than 128 characters, and use printable ASCII characters only. Supported by SumUp app version 1.53 and later. Version 1.53.2 and later appends it to callback URLs when provided. |
+| `skip-screen-success` | Set `skip-screen-success=true` to skip the success screen after a successful payment. Your application becomes responsible for displaying the result to the customer. Supported by SumUp app version 1.69 and later.                                                       |
 
 ### Callback Query Parameters
 
 After the payment completes, the SumUp app opens `callbacksuccess` for a successful payment or `callbackfail` otherwise. The following query parameters may be appended:
 
-| Key | Possible values | Comment |
-| --- | :---: | :--- |
-| `smp-status` | `success` | The transaction succeeded. |
-|  | `failed` | The transaction failed. |
-|  | `invalidstate` | The SumUp app was not ready to accept a payment. Ask the merchant to open the SumUp app and make sure it is ready to accept payments. |
-| `smp-tx-code` | `TRANSACTION-CODE` | Transaction code for the payment. Supported by SumUp app version 1.53 and later. |
-| `foreign-tx-id` | `YOUR-TX-ID` | Present only when it was provided in the payment request. Supported by SumUp app version 1.53.2 and later. |
+| Key             | Possible values    | Comment                                                                                                                                 |
+|-----------------|:------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|
+| `smp-status`    | `success`          | The transaction succeeded.                                                                                                              |
+|                 | `failed`           | The transaction failed.                                                                                                                 |
+|                 | `invalidstate`     | The SumUp app was not ready to accept a payment. Ask the merchant to open the SumUp app and make sure it is ready to accept payments. |
+| `smp-tx-code`   | `TRANSACTION-CODE` | Transaction code for the payment. Supported by SumUp app version 1.53 and later.                                                            |
+| `foreign-tx-id` | `YOUR-TX-ID`       | Present only when it was provided in the payment request. Supported by SumUp app version 1.53.2 and later.                             |
 
 ## Integration Options
 
