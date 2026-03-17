@@ -2,7 +2,7 @@
 
 # SumUp iOS URL Scheme
 
-[![Documentation](https://img.shields.io/badge/docs-docs.sumup.com-0A2540)](https://docs.sumup.com)
+[![Documentation][docs-badge]](https://developer.sumup.com)
 [![CI Status](https://github.com/sumup/sumup-ios-url-scheme/actions/workflows/ci.yml/badge.svg)](https://github.com/sumup/sumup-ios-url-scheme/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/sumup/sumup-ios-url-scheme)](./LICENSE)
 [![Platform](https://img.shields.io/badge/platform-iOS-000000)](https://developer.apple.com/ios/)
@@ -144,3 +144,5 @@ func scene(_ scene: UIScene, openURLContexts urlContexts: Set<UIOpenURLContext>)
 
 - Questions: contact [integration@sumup.com](mailto:integration@sumup.com)
 - Bugs: [open an issue](https://github.com/sumup/sumup-ios-url-scheme/issues/new)
+
+[docs-badge]: https://img.shields.io/badge/SumUp-documentation-white.svg?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgY29sb3I9IndoaXRlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGggZD0iTTIyLjI5IDBIMS43Qy43NyAwIDAgLjc3IDAgMS43MVYyMi4zYzAgLjkzLjc3IDEuNyAxLjcxIDEuN0gyMi4zYy45NCAwIDEuNzEtLjc3IDEuNzEtMS43MVYxLjdDMjQgLjc3IDIzLjIzIDAgMjIuMjkgMFptLTcuMjIgMTguMDdhNS42MiA1LjYyIDAgMCAxLTcuNjguMjQuMzYuMzYgMCAwIDEtLjAxLS40OWw3LjQ0LTcuNDRhLjM1LjM1IDAgMCAxIC40OSAwIDUuNiA1LjYgMCAwIDEtLjI0IDcuNjlabTEuNTUtMTEuOS03LjQ0IDcuNDVhLjM1LjM1IDAgMCAxLS41IDAgNS42MSA1LjYxIDAgMCAxIDcuOS03Ljk2bC4wMy4wM2MuMTMuMTMuMTQuMzUuMDEuNDlaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+
