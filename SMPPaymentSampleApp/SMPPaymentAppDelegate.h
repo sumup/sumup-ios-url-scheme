@@ -8,12 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@class SMPPaymentViewController;
-
 @interface SMPPaymentAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property(strong, nonatomic) UIWindow* window;
-
-@property(strong, nonatomic) SMPPaymentViewController* viewController;
-
 @end

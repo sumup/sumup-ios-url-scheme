@@ -13,6 +13,55 @@
 
 @implementation SMPPaymentViewController
 
+- (void)handleSumUpCallbackURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication
+{
+    if (sourceApplication.length && ![sourceApplication hasPrefix:@"com.sumup.merchant"])
+    {
+        NSLog(@"Not SumUp merchant app.");
+        return;
+    }
+
+    NSString* status;
+    NSString* txCode;
+
+    for (NSURLQueryItem* queryItem in [[NSURLComponents alloc] initWithURL:url
+                                                 resolvingAgainstBaseURL:NO].queryItems)
+    {
+        if ([queryItem.name isEqualToString:(NSString*)SMPPaymentRequestKeyStatus])
+        {
+            status = queryItem.value;
+        }
+        else if ([queryItem.name isEqualToString:(NSString*)SMPPaymentRequestKeyTransactionCode])
+        {
+            txCode = queryItem.value;
+        }
+    }
+
+    NSString* alertTitle = status ?: @"Callback received";
+    NSString* alertMessage;
+
+    if ([status isEqualToString:(NSString*)SMPPaymentRequestStatusSuccess])
+    {
+        alertMessage = [NSString stringWithFormat:@"Thanks. Payment successful. Code: %@.", txCode];
+    }
+    else
+    {
+        alertMessage = [NSString
+            stringWithFormat:@"Payment failed with status and code: %@ - %@", status, txCode];
+    }
+
+    NSLog(@"status - code: %@ - %@", status, txCode);
+
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                             message:alertMessage
+                                                                      preferredStyle:
+                                                                          UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
