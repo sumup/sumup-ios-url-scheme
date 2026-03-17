@@ -1,0 +1,32 @@
+name: Compatibility
+
+on:
+  push:
+    branches:
+      - main
+      - 'fix/**'
+      - 'chore/**'
+      - 'docs/**'
+      - 'ci/**'
+  pull_request:
+
+jobs:
+  compatibility:
+    runs-on: macos-13
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate documented and exported compatibility contract
+        run: bash scripts/check-compatibility-contract.sh
+
+      - name: Build sample app
+        run: |
+          xcodebuild \
+            -project SMPPaymentSampleApp.xcodeproj \
+            -scheme SMPPaymentSampleApp \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build
