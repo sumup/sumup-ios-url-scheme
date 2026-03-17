@@ -36,7 +36,8 @@
     NSString* txCode;
 
     for (NSURLQueryItem* queryItem in [[NSURLComponents alloc] initWithURL:url
-                                                 resolvingAgainstBaseURL:NO].queryItems)
+                                                   resolvingAgainstBaseURL:NO]
+             .queryItems)
     {
         if ([queryItem.name isEqualToString:(NSString*)SMPPaymentRequestKeyStatus])
         {
