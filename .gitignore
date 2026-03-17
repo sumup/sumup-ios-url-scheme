@@ -1,6 +1,8 @@
 ## Build generated
 build/
 DerivedData
+.build/
+SMPPayment.xcframework/
 
 ## Various settings
 *.pbxuser

@@ -20,6 +20,7 @@ assert_contains() {
 
 readme="README.md"
 header="SMPPayment.framework/Versions/A/Headers/SMPPaymentRequest.h"
+source_header="Sources/SMPPayment/include/SMPPaymentRequest.h"
 binary="SMPPayment.framework/SMPPayment"
 
 assert_contains "$readme" 'sumupmerchant://pay/1.0'
@@ -39,6 +40,15 @@ assert_contains "$header" 'canOpenSumUpMerchantApp'
 assert_contains "$header" 'showSumUpMerchantInAppStore'
 assert_contains "$header" 'openSumUpMerchantApp'
 assert_contains "$header" 'urlToLaunchSumupMerchantApp'
+
+assert_contains "$source_header" 'SMPPaymentRequestKeyStatus'
+assert_contains "$source_header" 'SMPPaymentRequestKeyTransactionCode'
+assert_contains "$source_header" 'SMPPaymentRequestKeyForeignTransactionID'
+assert_contains "$source_header" 'paymentRequestWithAmount:'
+assert_contains "$source_header" 'canOpenSumUpMerchantApp'
+assert_contains "$source_header" 'showSumUpMerchantInAppStore'
+assert_contains "$source_header" 'openSumUpMerchantApp'
+assert_contains "$source_header" 'urlToLaunchSumupMerchantApp'
 
 nm_output="$(mktemp)"
 trap 'rm -f "$nm_output"' EXIT

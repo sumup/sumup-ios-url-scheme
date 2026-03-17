@@ -97,6 +97,12 @@ request.skipScreenOptions = SMPSkipScreenOptionSuccess;
 [request openSumUpMerchantApp];
 ```
 
+## Distribution Options
+
+The repository now includes a `Package.swift` manifest and a source-backed `SMPPayment` target so existing integrators can adopt the helper framework through Swift Package Manager without changing the Objective-C API.
+
+The original `SMPPayment.framework` remains in the repository for legacy consumers. The source package mirrors the public header surface from that framework rather than changing the integration contract.
+
 ## Handle The Callback
 
 On current iOS versions, handle the callback in your scene delegate or `application:openURL:options:` implementation. Parse query items with `NSURLComponents` instead of manually splitting strings.
